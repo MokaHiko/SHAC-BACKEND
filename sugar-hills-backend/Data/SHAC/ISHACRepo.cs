@@ -15,5 +15,6 @@ namespace sugar_hills_backend.Data.SHAC
         Task<IEnumerable<ShacTimeCardDTO>> GetEmployeesFromDay(GetEmployeesFromDayDTO Date);
         Task<int> AddEmployeeToDay(AddToTimeCardDTO employee);
         Task<int> RemoveEmployeeFromDay(RemoveEmployeeFromTimeCardDTO Employee);
+        Task<int> EditEmployeeFromDay(EditEmployeeTimeCardDTO Employee);
     }
 }

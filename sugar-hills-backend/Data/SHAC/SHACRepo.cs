@@ -37,6 +37,18 @@ namespace sugar_hills_backend.Data.SHAC
             }
         }
 
+        public async Task<int> EditEmployeeFromDay(EditEmployeeTimeCardDTO Employee)
+        {
+            const string query = @"UPDATE dbo.SHACTimeCard
+                                SET TimeIn = @TimeIn, TimeOut = @TimeOut
+                                WHERE EmployeeID = @EmployeeID AND TimeIn = @TimeIn";
+            using (var conn = new SqlConnection(_connectionString.Value))
+            {
+                var result = await conn.ExecuteAsync(query, Employee);
+                return result;
+            }
+        }
+
         public async Task<IEnumerable<SHACEmployee>> GetEmployees()
         {
             const string query = @"SELECT * FROM SHACEmployees";

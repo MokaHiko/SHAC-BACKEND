@@ -66,6 +66,17 @@ namespace sugar_hills_backend.Controllers
             return StatusCode(500, new { Message = "Unable to Add Employee" });
         }
 
+        [HttpPut("api/shac/timecard")]
+        public async Task<IActionResult> EditEmployeeTimeCard([FromBody] EditEmployeeTimeCardDTO employee)
+        {
+            var result = await _shacRepo.EditEmployeeFromDay(employee);
+            if (result > 0)
+            {
+                return Ok(new { Message = "Updated Employee" });
+            }
+            return StatusCode(500, new { Message = "Failed To Update TimeCard" });
+        }
+
         [HttpDelete("api/shac/timecard")]
         public async Task<IActionResult> RemoveEmployeeFromDay([FromBody] RemoveEmployeeFromTimeCardDTO employee)
         {
